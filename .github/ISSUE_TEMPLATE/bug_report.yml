@@ -1,0 +1,19 @@
+name: Bug report
+description: Something isn't posting or is posting wrong
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: What you expected vs what you got. Remove tokens and webhook URLs!
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Logs
+      description: Output of `docker compose logs` or `journalctl -u github-discord-notifier`
+      render: text
+  - type: dropdown
+    attributes:
+      label: How are you running it?
+      options: [Docker, systemd, plain python, other]

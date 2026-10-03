@@ -1,0 +1,22 @@
+# Install: copy notifier.py and .env to /opt/github-discord-notifier, then
+#   sudo cp github-discord-notifier.service /etc/systemd/system/
+#   sudo systemctl enable --now github-discord-notifier
+[Unit]
+Description=GitHub -> Discord notifier
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/opt/github-discord-notifier/.env
+Environment=STATE_FILE=/var/lib/github-discord-notifier/state.json
+ExecStart=/usr/bin/python3 -u /opt/github-discord-notifier/notifier.py
+DynamicUser=yes
+StateDirectory=github-discord-notifier
+ProtectSystem=strict
+ProtectHome=yes
+NoNewPrivileges=yes
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

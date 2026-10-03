@@ -1,0 +1,11 @@
+services:
+  notifier:
+    image: ghcr.io/bel3ota/github-discord-notifier:latest
+    build: .
+    env_file: .env
+    volumes:
+      - state:/data
+    restart: unless-stopped
+
+volumes:
+  state:

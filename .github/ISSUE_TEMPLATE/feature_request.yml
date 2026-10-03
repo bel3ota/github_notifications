@@ -1,0 +1,9 @@
+name: Feature request
+description: A GitHub event or option you'd like supported
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: What would you like?
+    validations:
+      required: true
